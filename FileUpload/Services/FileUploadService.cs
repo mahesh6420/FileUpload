@@ -14,16 +14,16 @@ namespace FileUpload.Services
                 return false;
             }
 
+            Guid guid = new Guid();
             string path = Path.Combine(
-                Directory.GetCurrentDirectory(), "wwwroot", "images",
-                string.Concat("a", new Guid().ToString()));
+                $"wwwroot\\images\\{guid.ToString()}", model.UploadedFile.FileName);
 
-            if(!Directory.Exists(path))
+            if(!Directory.Exists($"wwwroot\\images\\{guid}"))
             {
-                Directory.CreateDirectory(path);
+                Directory.CreateDirectory($"wwwroot\\images\\{guid}");
             }
 
-            using (var stream = new FileStream(path, FileMode.Create, FileAccess.ReadWrite))
+            using (var stream = new FileStream(path, FileMode.Create))
             {
                 await model.UploadedFile.CopyToAsync(stream);
             }
