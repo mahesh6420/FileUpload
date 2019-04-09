@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FileUpload.Data;
+using FileUpload.Repositories;
 using FileUpload.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -39,6 +40,7 @@ namespace FileUpload
             });
 
             services.AddTransient<IFileUploadService, FileUploadService>();
+            services.AddTransient<IBaseRepository, BaseRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

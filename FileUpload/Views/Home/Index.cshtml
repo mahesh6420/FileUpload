@@ -1,18 +1,19 @@
-﻿@model FileUploadViewModel
+﻿@model List<FileUploadViewModel>
 
 @{
     ViewData["Title"] = "Home Page";
 }
 
-    <form asp-antiforgery="true" method="post" enctype="multipart/form-data" >
-        <div class="form-group">
-            <label asp-for="FileName">Example file input</label>
-            <input asp-for="FileName" class="form-control-file">
-        </div>
+<a asp-action="create">Upload New Photo</a>
 
-        <div class="form-group">
-            <label asp-for="UploadedFile">Example file input</label>
-            <input asp-for="UploadedFile" class="form-control-file">
-        </div>
-        <button type="submit" class="btn btn-primary mb-2">Submit</button>
-    </form>
+<div class="row">
+    @if (Model != null && Model.Count() > 0)
+    {
+        foreach (var image in Model)
+        {
+            <div class="col-md-4 hover-zoom">
+                <img src="@image.FilePath" alt="@image.FileName" height="250" width="250" class="img-thumbnail">
+            </div>
+        }
+    }
+</div>

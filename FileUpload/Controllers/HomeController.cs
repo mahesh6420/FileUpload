@@ -17,14 +17,19 @@ namespace FileUpload.Controllers
             _service = service;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
+        {
+            return View(await _service.GetAll());
+        }
+
+         public IActionResult Create()
         {
             return View();
         }
         
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Index([FromForm]FileUploadViewModel model)
+        public async Task<IActionResult> Create([FromForm]FileUploadViewModel model)
         {
             if(ModelState.IsValid)
             {
