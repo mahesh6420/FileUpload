@@ -1,0 +1,19 @@
+﻿@model List<FileUploadViewModel>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<a asp-action="create">Upload New Photo</a>
+
+<div class="row">
+    @if (Model != null && Model.Count() > 0)
+    {
+        foreach (var image in Model)
+        {
+            <div class="col-md-4 hover-zoom">
+                <img src="@image.FilePath" alt="@image.FileName" height="250" width="250" class="img-thumbnail">
+            </div>
+        }
+    }
+</div>

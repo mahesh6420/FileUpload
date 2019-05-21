@@ -1,0 +1,29 @@
+﻿@model MultipleFileUploadViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+    <form asp-antiforgery="true" method="post" action="api/uploadfromapi/create" enctype="multipart/form-data" >
+        <div class="form-group">
+            <label asp-for="File[0].FileName">Example file input 1</label>
+            <input asp-for="File[0].FileName" class="form-control-file">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="File[0].UploadedFile">Example file input 1</label>
+            <input asp-for="File[0].UploadedFile" class="form-control-file">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="File[1].FileName">Example file input 2</label>
+            <input asp-for="File[1].FileName" class="form-control-file">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="File[1].UploadedFile">Example file input 2</label>
+            <input asp-for="File[1].UploadedFile" class="form-control-file">
+        </div>
+
+        <button type="submit" class="btn btn-primary mb-2">Submit</button>
+    </form>

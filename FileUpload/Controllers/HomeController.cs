@@ -22,7 +22,7 @@ namespace FileUpload.Controllers
             return View(await _service.GetAll());
         }
 
-         public IActionResult Create()
+        public IActionResult Create()
         {
             return View();
         }
